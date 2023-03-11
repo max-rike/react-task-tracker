@@ -4,19 +4,23 @@ import Tasks from "./components/Tasks";
 
 function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, text: "one", date: "monday" },
-    { id: 2, text: "two", date: "tuesday" },
-    { id: 3, text: "three", date: "wednesday" },
+    { id: 1, text: "one", date: "monday", reminder: true },
+    { id: 2, text: "two", date: "tuesday", reminder: true },
+    { id: 3, text: "three", date: "wednesday", reminder: false },
   ]);
   //delete task
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
+  //toggle remindr
+  const toggleReminder = (id) => {
+    console.log(id);
+  };
   return (
     <div className="container">
       <Header />
       {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
         "No tasks"
       )}
